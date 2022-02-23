@@ -18,7 +18,7 @@ if test -f "$shortcutPath"; then
     exit 1
 fi
 
-read -p "absolute path, icon path: " icon
+read -p "absolute path, icon path (Optional): " icon
 if [$icon = ""]; then
 echo "icon is empty"
 elif ! test -f $icon; then
