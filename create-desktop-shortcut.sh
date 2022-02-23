@@ -10,9 +10,10 @@ fi
 
 # generate name, and check
 name=$(basename $path)
-if test -f "$name.desktop"; then
-    echo "file exist, on $(pwd)/"$name".desktop"
-    echo "you should run script on different path, or delete this file, for generate new shortcut file."
+shortcutPath=$HOME/Desktop/$name".desktop"
+if test -f "$shortcutPath"; then
+    echo "file exist, on $shortcutPath"
+    echo "you should delete, if want to replace file"
     echo "script will stopped"
     exit 1
 fi
@@ -27,7 +28,7 @@ exit 1
 fi
 
 # create $name.desktop shortcut
-cat > $name".desktop" <<EOF
+cat <<EOF > "$shortcutPath"
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
@@ -37,6 +38,8 @@ Name=$name
 Icon=$icon
 EOF
 
-echo "shortcut created"
-echo $(pwd)"/"name".desktop"
-echo "you should make file executable"
+
+
+echo "success, shortcut created."
+echo $shortcutPath
+echo "then, you should make file executable."
